@@ -4,8 +4,8 @@ import numpy as np
 import time
 
 class Tx:
-    def __init__(self, modem, signal, power_level, number_of_loops=1, sleep_between_loops=0):
-        self.modem = modem      
+    def __init__(self, sock, signal, power_level, number_of_loops=1, sleep_between_loops=0):
+        self.sock = sock      
         self.signal = signal
         self.power_level = power_level
         self.number_of_loops = number_of_loops
@@ -15,7 +15,7 @@ class Tx:
     def id(self):
         print("\n")
         print("Task Type: TX")
-        print("Modem: " + self.modem)
+        print("Sock: " + self.sock)
         print("Signal: " + self.signal)
         print("Power_level: " + str(self.power_level))
         print("Number_of_loops: " + str(self.number_of_loops))
@@ -23,11 +23,11 @@ class Tx:
 
 
     def exec_step(self):
-        bb = modem.agentForService(Services.BASEBAND)
+        bb = sock.agentForService(Services.BASEBAND)
         for i in range(0, self.number_of_loops):
             print("-I- Tx #" + str(i+1) + " " + self.siganl)
             bb << org_arl_unet_bb.TxBasebandSignalReq(signal=signal.tolist(), fc=0, fs=192000)
-            txntf4 = modem.receive(TxFrameNtf, 5000)
+            txntf4 = sock.receive(TxFrameNtf, 5000)
             if txntf4 is not None:
                 # Request a recording from txTime onwards
                 bb << RecordBasebandSignalReq(recTime=txntf4.txTime, recLen=(len(tx_signal)*2))

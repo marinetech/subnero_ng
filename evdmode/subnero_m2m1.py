@@ -1,8 +1,8 @@
 modem = '192.168.0.11'
-power_level = -60 #Max:0; Min:-138
+power_level = -40 #Max:0; Min:-138
 signal_file = '../signals/subnero.sig'
-rec_size = 12000
-rx_out_folder = "rx_out"
+rec_size = 192000
+rx_out_folder = "out/rx_out"
 rx_out_file = "rx_rec_"
 sleep_between_loops = 2 #seconds
 number_of_loops = 3
@@ -26,10 +26,11 @@ except:
 
 # If necessary, create out folder
 i = 1
-while os.path.exists(rx_out_folder):
-        rx_out_folder = rx_out_folder + "_" + str(i)
+folder_to_create = rx_out_folder
+while os.path.exists(folder_to_create):
+        folder_to_create = rx_out_folder + "_" + str(i)
         i = i + 1
-os.makedirs(rx_out_folder)
+os.makedirs(folder_to_create)
 
 
 print("-I- loading signal from: " + signal_file)

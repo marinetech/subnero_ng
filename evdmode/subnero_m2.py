@@ -1,8 +1,9 @@
 modem = '192.168.0.11'
-power_level = -60 #Max:0; Min:-138
+power_level = -40 #Max:0; Min:-138
 signal_file = '../signals/subnero.sig'
 number_of_loops = 3
 sleep_between_loops = 2 #seconds
+passband = 1 #0 means baseband
 
 #---------------------------------------#
 from unetpy import *

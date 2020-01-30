@@ -1,6 +1,6 @@
 {
   "modem" : "192.168.0.11",
-  "tasks" : [
+  "steps" : [
     {
       "type": "Tx",
       "signal": "signals/subnero.sig",
@@ -17,6 +17,20 @@
     },
     {
       "type": "TxRx",
+      "signal": "signals/subnero.sig",
+      "ip_address" : "192.168.0.1",
+      "number_of_loops" : 1,
+      "sleep_between_loops" : 0
+    },
+    {
+      "type": "send",
+      "signal": "signals/subnero.sig",
+      "ip_address" : "192.168.0.1",
+      "number_of_loops" : 1,
+      "sleep_between_loops" : 0
+    },
+    {
+      "type": "file",
       "signal": "signals/subnero.sig",
       "ip_address" : "192.168.0.1",
       "number_of_loops" : 1,
