@@ -1,15 +1,28 @@
-import env
-from task import *
+from unetpy import *
+from arlpy import *
+import numpy as np
+import time
 
-class Tx(Task):
-    def __init__(self, ip_address, signal,  number_of_loops=1, sleep_between_loops=0):
-        super().__init__(ip_address)
-        self.siganl = signal
+class Tx:
+    def __init__(self, modem, signal, power_level, number_of_loops=1, sleep_between_loops=0):
+        self.modem = modem      
+        self.signal = signal
+        self.power_level = power_level
         self.number_of_loops = number_of_loops
         self.sleep_between_loops = sleep_between_loops
+    
+
+    def id(self):
+        print("\n")
+        print("Task Type: TX")
+        print("Modem: " + self.modem)
+        print("Signal: " + self.signal)
+        print("Power_level: " + str(self.power_level))
+        print("Number_of_loops: " + str(self.number_of_loops))
+        print("Sleep_between_loops: " + str(self.sleep_between_loops))
 
 
-    def exec(self):
+    def exec_step(self):
         bb = modem.agentForService(Services.BASEBAND)
         for i in range(0, self.number_of_loops):
             print("-I- Tx #" + str(i+1) + " " + self.siganl)
@@ -24,3 +37,9 @@ class Tx(Task):
             if self.sleep_between_loops:
                 print("-I- sleeping for {} seconds".format(sleep_between_loops))
                 time.sleep(sleep_between_loops)
+
+
+if __name__ == "__main__":
+    task = Tx("192.168.0.11", "../signals/subnero.sig", -120, 2, 2)
+    task.id()
+    task.exec_step()
