@@ -1,4 +1,5 @@
 modem = '192.168.0.11'
+port = 1100
 power_level = -40 #Max:0; Min:-138
 signal_file = '../signals/subnero.sig'
 number_of_loops = 3
@@ -13,7 +14,7 @@ import time
 
 print("-I- connecting to modem: " + modem)
 try:
-    sock = UnetSocket(modem, 1100)
+    sock = UnetSocket(modem, port)
     gw = sock.getGateway()
 except:
     print("-E- Failed")

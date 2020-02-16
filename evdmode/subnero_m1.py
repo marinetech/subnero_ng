@@ -1,4 +1,5 @@
 modem = '192.168.0.11'
+port = 1100
 number_of_recs = 3
 rec_size = 192000
 rx_out_folder = "out/rx_out"
@@ -15,7 +16,7 @@ from unetpy import *
 
 
 # Open connection to the modem
-print("-I- connecting to modem: " + modem)
+print("-I- connecting to modem: " + port)
 try:
     sock = UnetSocket(modem, 1100)
     gw = sock.getGateway()

@@ -1,36 +1,39 @@
 {
-  "modem" : "192.168.0.11",
+  "modem" : "localhost",
+  "port" : 1101,
   "steps" : [
     {
-      "type": "Tx",
+      "type": "_Tx",
       "signal": "signals/subnero.sig",
-      "ip_address" : "192.168.0.1",
+      "fc" : 0,
+      "power_level" : -40,
       "number_of_loops" : 1,
       "sleep_between_loops" : 0
     },
     {
       "type": "Rx",
+      "rec_size" : 192000,
+      "rx_out_folder" : "/home/ilan/projects/subnero_ng/out/rx_out",
+      "rx_out_file" : "rx_rec_",
+      "number_of_recs" : 1,
+      "sleep_between_loops" : 0
+    },
+    {
+      "type": "_TxRx",
       "signal": "signals/subnero.sig",
       "ip_address" : "192.168.0.1",
       "number_of_loops" : 1,
       "sleep_between_loops" : 0
     },
     {
-      "type": "TxRx",
+      "type": "_msg",
       "signal": "signals/subnero.sig",
       "ip_address" : "192.168.0.1",
       "number_of_loops" : 1,
       "sleep_between_loops" : 0
     },
     {
-      "type": "send",
-      "signal": "signals/subnero.sig",
-      "ip_address" : "192.168.0.1",
-      "number_of_loops" : 1,
-      "sleep_between_loops" : 0
-    },
-    {
-      "type": "file",
+      "type": "_file",
       "signal": "signals/subnero.sig",
       "ip_address" : "192.168.0.1",
       "number_of_loops" : 1,
