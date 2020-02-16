@@ -2,6 +2,9 @@ import json
 import sys
 from modules.tx import *
 from modules.rx import *
+from modules.txrx import *
+from modules.sendmsg import *
+from modules.getmsg import *
 
 
 def usage():
@@ -34,14 +37,17 @@ def load_mission():
 
 def create_task(step):
     type = step["type"].lower()
-    if type == "tx":
-        print(str(step))
+    if type == "tx":        
         return Tx(sock, step["signal"], step["power_level"], step["number_of_loops"], step["sleep_between_loops"], step["fc"])
     elif type == "rx":
         print(str(step))
         return Rx(sock, step["number_of_recs"], step["rec_size"], step["rx_out_folder"], step["rx_out_file"], step["sleep_between_loops"])
     elif type == "txrx":
-        pass
+        return TxRx(sock, step["signal"], step["power_level"], step["number_of_loops"], step["sleep_between_loops"], step["fc"], step["rec_size"], step["rx_out_folder"], step["rx_out_file"])
+    elif type == "sendmsg":
+        return SendMsg(sock, step["recipient"], step["power_level"], step["text"], step["number_of_loops"],  step["sleep_between_loops"])
+    elif type == "getmsg":
+        return GetMsg(sock)
     else:
         return None
 

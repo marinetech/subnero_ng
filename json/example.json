@@ -11,7 +11,7 @@
       "sleep_between_loops" : 0
     },
     {
-      "type": "Rx",
+      "type": "_Rx",
       "rec_size" : 192000,
       "rx_out_folder" : "/home/ilan/projects/subnero_ng/out/rx_out",
       "rx_out_file" : "rx_rec_",
@@ -19,18 +19,26 @@
       "sleep_between_loops" : 0
     },
     {
-      "type": "_TxRx",
+      "type": "TxRx",
       "signal": "signals/subnero.sig",
-      "ip_address" : "192.168.0.1",
+      "fc" : 0,
+      "power_level" : -40,
+      "number_of_loops" : 1,
+      "sleep_between_loops" : 0,
+      "rec_size" : 192000,
+      "rx_out_folder" : "/home/ilan/projects/subnero_ng/out/rx_out",
+      "rx_out_file" : "rx_rec_"
+    },
+    {
+      "type": "_SendMsg",
+      "recipient": 31,
+      "power_level" : -60,
+      "text" : "test message!!!",
       "number_of_loops" : 1,
       "sleep_between_loops" : 0
     },
     {
-      "type": "_msg",
-      "signal": "signals/subnero.sig",
-      "ip_address" : "192.168.0.1",
-      "number_of_loops" : 1,
-      "sleep_between_loops" : 0
+      "type": "_GetMsg"
     },
     {
       "type": "_file",
